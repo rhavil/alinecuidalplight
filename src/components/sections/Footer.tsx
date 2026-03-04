@@ -2,16 +2,13 @@
 
 import { Heading, Text } from "@/components/ui/Typography";
 import { Button } from "@/components/ui/Button";
-import { useLenis } from "@studio-freight/react-lenis";
-
 export function Footer() {
-    const lenis = useLenis();
-
     const scrollTo = (e: React.MouseEvent<HTMLAnchorElement>, target: string) => {
         e.preventDefault();
-        if (lenis) {
-            // Check if it's a valid selector or just scroll to top if empty target
-            lenis.scrollTo(target === '#' ? 0 : target);
+        if (target === '#') {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        } else {
+            document.querySelector(target)?.scrollIntoView({ behavior: 'smooth' });
         }
     };
 
